@@ -15,17 +15,17 @@ router.get("/register", (req, res) => res.render("register"));
 
 // Register handle
 router.post("/register", (req, res) => {
-    const { name, email, password, password2 } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
 
     let errors = [];
 
     // Check required fields
-    if (!name || !email || !password || !password2) {
+    if (!name || !email || !password || !confirmPassword) {
         errors.push({ msg: "Please fill in all fields" });
     }
 
     // Check passwords match
-    if (password !== password2) {
+    if (password !== confirmPassword) {
         errors.push({ msg: "Passwords do not match" });
     }
 
